@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const quotes = [
+  "test1",
+  "test2",
+  "test3",
+  "test4"
+]
+class App extends React.Component {
+
+
+  constructor() {
+    super();
+    this.state = {
+      curIndex: 0
+    }
+    this.handleClick = this.handleClick.bind(this);
+
+  }
+
+
+  handleClick() {
+    this.setState({
+      curIndex: Math.floor(Math.random() * quotes.length)
+    })
+  }
+
+
+  render() {
+    return (
+      < div >
+        <h1 className="quote">
+          {quotes[this.state.curIndex]}
+        </h1>
+        <button onClick={this.handleClick}>
+          press to generate new quote
+        </button>
+
+      </div >
+
+    );
+  }
+
 }
 
 export default App;
